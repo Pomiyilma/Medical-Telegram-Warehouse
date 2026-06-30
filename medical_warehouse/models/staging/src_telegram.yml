@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw_source
+    schema: raw
+    description: "This source contains the direct, untouched raw data feeds loaded from our Telegram scraping lake."
+    tables:
+      - name: telegram_messages
+        description: "The primary landing table holding raw extracted messages and unstructured media paths from medical channels."
+        

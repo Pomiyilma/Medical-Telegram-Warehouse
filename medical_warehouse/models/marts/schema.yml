@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "Dimension table containing aggregated performance and structural metadata for each unique scraped Telegram channel."
+    columns:
+      - name: channel_key
+        description: "The primary surrogate key generated via MD5 hash formatting."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_dates
+    description: "Calendar breakdown dimension table mapping chronological message timestamps into structural analytics time attributes."
+    columns:
+      - name: date_key
+        description: "The primary integer surrogate date key formatted as YYYYMMDD."
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_messages
+    description: "Central fact table holding independent message metric counts, lengths, media locations, and analytical dimension references."
+    columns:
+      - name: message_id
+        description: "The original source native identification number assigned by Telegram."
+        tests:
+          - not_null
+      - name: channel_key
+        description: "Foreign key lookup pointing back towards the dim_channels dimension table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_key
+      - name: date_key
+        description: "Foreign key lookup pointing back towards the dim_dates calendar helper table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_key
+              
