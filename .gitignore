@@ -1,27 +1,36 @@
-# Virtual environment
-.venv/
-
-# Environment variables
+# ENVIRONMENT SECURITY & SECRETS (CRITICAL - DO NOT TRACK)
 .env
+*.env
+medical_session.session
+medical_session.session-journal
 
-# Python cache
+# PYTHON ENVIRONMENT & CACHES
+.venv/
+venv/
+ENV/
 __pycache__/
-*.py[cod]
-
-# Test cache
+*.pyc
+*.pyo
+*.pyd
 .pytest_cache/
+.poetry/
 
-# VS Code
-.vscode/
+# DATA LAKE OBJECTS & IMAGES (Prevents pushing gigabytes of media files)
+data/raw/
+data/photos/
+*.csv
+*.json
 
-# Logs
-logs/
+# MACHINE LEARNING / COMPUTER VISION WEIGHTS (YOLO)
+*.pt
+runs/
+.ultralytics/
 
-# OS files
-.DS_Store
-Thumbs.db
+# DBT (DATA BUILD TOOL) COMPILATION TEMPS
+medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
 
-*.session
-*.session-journal
-
-data/
+# DAGSTER RUNTIME TEMP FILES
+.dagster/
+$storage/

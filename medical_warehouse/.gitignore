@@ -3,3 +3,42 @@ target/
 dbt_packages/
 logs/
 .env
+
+
+
+# ENVIRONMENT SECURITY & SECRETS (CRITICAL - DO NOT TRACK)
+.env
+*.env
+medical_session.session
+medical_session.session-journal
+
+# PYTHON ENVIRONMENT & CACHES
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.poetry/
+
+# DATA LAKE OBJECTS & IMAGES (Prevents pushing gigabytes of media files)
+data/raw/
+data/photos/
+*.csv
+*.json
+
+# MACHINE LEARNING / COMPUTER VISION WEIGHTS (YOLO)
+*.pt
+runs/
+.ultralytics/
+
+# DBT (DATA BUILD TOOL) COMPILATION TEMPS
+medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
+
+# DAGSTER RUNTIME TEMP FILES
+.dagster/
+$storage/

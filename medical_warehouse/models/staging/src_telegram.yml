@@ -7,4 +7,7 @@ sources:
     tables:
       - name: telegram_messages
         description: "The primary landing table holding raw extracted messages and unstructured media paths from medical channels."
+      - name: yolo_detections
+        description: "The computer vision categorization outputs generated via YOLOv8 model sweeps."
+        
         
